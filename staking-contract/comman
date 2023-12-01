@@ -1,23 +1,22 @@
-mxpy --verbose contract deploy --bytecode=/Users/jhonattan/Documents/chaallenger/staking-contract/output/staking-contract.wasm \
-    --recall-nonce --pem=/Users/jhonattan/Documents/chaallenger/staking-contract/wallet-owner.pem \
+mxpy --verbose contract deploy --bytecode=${FILE_WASM} \
+    --recall-nonce --pem=${PEM} \
     --gas-limit=60000000 \
     --send --outfile="deploy-devnet.interaction.json" --wait-result \
     --proxy=https://devnet-gateway.multiversx.com --chain=D
 
 mxpy --verbose contract upgrade erd1qqqqqqqqqqqqqpgq5ukfs5s52r44shwnwk7sk8c4n75exqd6etesa7htuf \
-    --bytecode=/Users/jhonattan/Documents/chaallenger/staking-contract/output/staking-contract.wasm \
-    --recall-nonce --pem=/Users/jhonattan/Documents/chaallenger/staking-contract/wallet-owner.pem \
+     --bytecode=${FILE_WASM} \
+    --recall-nonce --pem=${PEM} \
     --gas-limit=60000000 \
     --send --outfile="deploy-devnet.interaction.json"  \
     --proxy=https://devnet-gateway.multiversx.com --chain=D
 
 
-
-mxpy --verbose contract call erd1qqqqqqqqqqqqqpgqlecks6h4lwk45fa8ush5hpzhmcf53hthetes4e8asz \
+mxpy --verbose contract call erd1qqqqqqqqqqqqqpgqdskqz3u2tv58svf6w235d4r5d84q79z5etespzagdr \
     --proxy=https://devnet-gateway.multiversx.com --chain=D \
-    --send --recall-nonce --pem=/Users/jhonattan/Documents/chaallenger/staking-contract/wallet-owner.pem \
+    --send --recall-nonce --pem=${PEM} \
     --gas-limit=60000000 \
-    --value=100000000000000000 \
+    --value=1000000000000000000 \
     --function="stake"
 
 
@@ -47,9 +46,9 @@ mxpy --verbose contract query  erd1qqqqqqqqqqqqqpgqkvqeaf6xm57dccwge4knul5tzew2r
 mxpy wallet bech32 --decode erd1hsjenjp8rhl8rdy7tuxftl26rrd4x4rceak78g0xdfykvvg8etesk45cku
 
     
-mxpy --verbose contract call erd1qqqqqqqqqqqqqpgqlecks6h4lwk45fa8ush5hpzhmcf53hthetes4e8asz \
+mxpy --verbose contract call erd1qqqqqqqqqqqqqpgqdskqz3u2tv58svf6w235d4r5d84q79z5etespzagdr \
     --proxy=https://devnet-gateway.multiversx.com --chain=D \
-    --send --recall-nonce --pem=/Users/jhonattan/Documents/chaallenger/staking-contract/wallet-owner.pem \
+    --send --recall-nonce --pem=${PEM} \
     --gas-limit=60000000 \
     --function="unstake" \
     --arguments 100000000000000000
