@@ -1,0 +1,62 @@
+mxpy --verbose contract deploy --bytecode=/Users/jhonattan/Documents/chaallenger/staking-contract/output/staking-contract.wasm \
+    --recall-nonce --pem=/Users/jhonattan/Documents/chaallenger/staking-contract/wallet-owner.pem \
+    --gas-limit=60000000 \
+    --send --outfile="deploy-devnet.interaction.json" --wait-result \
+    --proxy=https://devnet-gateway.multiversx.com --chain=D
+
+mxpy --verbose contract upgrade erd1qqqqqqqqqqqqqpgq5ukfs5s52r44shwnwk7sk8c4n75exqd6etesa7htuf \
+    --bytecode=/Users/jhonattan/Documents/chaallenger/staking-contract/output/staking-contract.wasm \
+    --recall-nonce --pem=/Users/jhonattan/Documents/chaallenger/staking-contract/wallet-owner.pem \
+    --gas-limit=60000000 \
+    --send --outfile="deploy-devnet.interaction.json"  \
+    --proxy=https://devnet-gateway.multiversx.com --chain=D
+
+
+
+mxpy --verbose contract call erd1qqqqqqqqqqqqqpgqlecks6h4lwk45fa8ush5hpzhmcf53hthetes4e8asz \
+    --proxy=https://devnet-gateway.multiversx.com --chain=D \
+    --send --recall-nonce --pem=/Users/jhonattan/Documents/chaallenger/staking-contract/wallet-owner.pem \
+    --gas-limit=60000000 \
+    --value=100000000000000000 \
+    --function="stake"
+
+
+mxpy --verbose contract query  erd1qqqqqqqqqqqqqpgq5ukfs5s52r44shwnwk7sk8c4n75exqd6etesa7htuf \
+    --proxy=https://devnet-gateway.multiversx.com \
+    --function="getStakingPosition" \
+     --arguments erd1hsjenjp8rhl8rdy7tuxftl26rrd4x4rceak78g0xdfykvvg8etesk45cku
+    # --arguments ${USER_ADDRESS}
+
+mxpy --verbose contract query  erd1qqqqqqqqqqqqqpgqyhkxzu2qynydrm5txq0vnz0tj5pamj3aetesukkevp \
+    --proxy=https://devnet-gateway.multiversx.com \
+    --function="getStakedAddresses" 
+     
+
+mxpy --verbose contract query  erd1qqqqqqqqqqqqqpgqkvqeaf6xm57dccwge4knul5tzew2rds0etesjhrqhw \
+    --proxy=https://devnet-gateway.multiversx.com \
+    --function="MAX_PERCENTAGE" 
+
+    mxpy --verbose contract query  erd1qqqqqqqqqqqqqpgqkvqeaf6xm57dccwge4knul5tzew2rds0etesjhrqhw \
+    --proxy=https://devnet-gateway.multiversx.com \
+    --function="getStakingGlobal" 
+
+
+
+
+
+mxpy wallet bech32 --decode erd1hsjenjp8rhl8rdy7tuxftl26rrd4x4rceak78g0xdfykvvg8etesk45cku
+
+    
+mxpy --verbose contract call erd1qqqqqqqqqqqqqpgqlecks6h4lwk45fa8ush5hpzhmcf53hthetes4e8asz \
+    --proxy=https://devnet-gateway.multiversx.com --chain=D \
+    --send --recall-nonce --pem=/Users/jhonattan/Documents/chaallenger/staking-contract/wallet-owner.pem \
+    --gas-limit=60000000 \
+    --function="unstake" \
+    --arguments 100000000000000000
+    
+    
+    1000000000000000000
+
+
+
+    erd1qqqqqqqqqqqqqpgqyhkxzu2qynydrm5txq0vnz0tj5pamj3aetesukkevp
